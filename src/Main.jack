@@ -1,0 +1,23 @@
+class Main{
+
+    function void main()
+    {
+        var Ball ball;
+        var GameField gameField;
+        var Player player1;
+
+        let ball = Ball.new();
+        let gameField = GameField.new();
+        let player1 = Player.new(30, 100);
+
+        while (true){
+            do ball.draw();
+            do gameField.draw();
+            do player1.draw();
+
+        }
+
+        return;
+        
+    }
+}

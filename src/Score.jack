@@ -1,0 +1,9 @@
+class Score{
+    field int scoreLeftPlayer, scoreRightPlayer;
+
+    constructor Score new(){
+        let scoreLeftPlayer = 0;
+        let scoreRightPlayer = 0;
+        return this;
+    }
+}

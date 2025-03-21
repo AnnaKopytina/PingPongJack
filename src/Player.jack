@@ -1,0 +1,21 @@
+class Player{
+    field int x, y;
+    field int sizeY, sizeX;
+    field int speed;
+
+    constructor Player new(int x,int y){
+        let x = x;
+        let y = y;
+
+        let sizeY = 40;
+        let sizeX = 3;
+        let speed = 5;
+        return this;
+    }
+
+    method void draw(){
+        do Screen.drawRectangle(x, y, x + sizeX, y+ sizeY);
+        return;
+    }
+
+}
