@@ -1,0 +1,89 @@
+class Ball {
+    field int xCord, yCord, radius;
+    field int xSpeed, ySpeed;
+    field Player playerLeft;
+    field Player playerRight;
+
+    constructor Ball new(Player player1, Player player2) {
+        let xCord = 512/2;
+        let yCord = 256/2;
+        let radius = 4; 
+        let xSpeed = 2;  
+        let ySpeed = 1;
+        let playerLeft = player1;
+        let playerRight = player2;
+
+        return this;
+    }
+
+    method void goToCenter(){
+        let xCord = 512 /2;
+        let yCord = 256/2;
+        return;
+    }
+
+    method void moving() {
+        // Стираем старый круг
+        do Screen.setColor(false);
+        do Screen.drawCircle(xCord, yCord, radius);
+
+        // Обновляем координаты
+        let xCord = xCord + xSpeed;
+        let yCord = yCord + ySpeed;
+
+        // Проверка столкновения с границами экрана
+        if (xCord - radius < 0) {
+            let xSpeed = -xSpeed;
+            let xCord = radius; // Корректировка координаты
+        }
+        if (xCord + radius > 511) {
+            let xSpeed = -xSpeed;
+            let xCord = 511 - radius; // Корректировка координаты
+        }
+        if (yCord - radius < 0) {
+            let ySpeed = -ySpeed;
+            let yCord = radius; // Корректировка координаты
+        }
+        if (yCord + radius > 255) {
+            let ySpeed = -ySpeed;
+            let yCord = 255 - radius; // Корректировка координаты
+        }
+
+
+
+        if(xSpeed < 0){
+            if ( ((xCord - radius) < ((playerLeft.getX() + playerLeft.getSizeX()) + 1)) &
+            (yCord > playerLeft.getY()) & 
+            (yCord < playerLeft.getY() + playerLeft.getSizeY()) ) {
+            let xSpeed = -xSpeed;
+            }
+        }
+
+        if(xSpeed > 0){
+            if ( ((xCord + radius) > playerRight.getX()) &
+            (yCord > playerRight.getY()) & 
+            (yCord < (playerRight.getY() + playerRight.getSizeY())) ) {
+            let xSpeed = -xSpeed;
+        }
+
+        }
+
+            if (((xCord - radius) <  5)){
+            do goToCenter();
+            do playerRight.incrementScore();
+
+            } 
+
+        if (((xCord + radius) > 509)){
+            do goToCenter();
+            do playerLeft.incrementScore();
+
+            } 
+
+        // Рисуем новый круг
+        do Screen.setColor(true);
+        do Screen.drawCircle(xCord, yCord, radius);
+
+        return;
+    }
+}

@@ -1,0 +1,12 @@
+class GameField{
+    field int LineLength;
+
+    constructor GameField new(){
+        let LineLength = 10;
+        return this;
+    }
+    method void draw(){
+        do Screen.drawRectangle(512/2 -1 , 5,512 /2 + 1 , 250);
+        return;
+    }
+}

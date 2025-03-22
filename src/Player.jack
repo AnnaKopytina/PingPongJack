@@ -1,0 +1,74 @@
+class Player{
+    field int x, y;
+    field int sizeY, sizeX;
+    field int step;
+    field int score;
+    field int side; //0 - left, 1 - right
+
+    constructor Player new(int X, int Y, int Side){
+        let x = X;
+        let y = Y;
+
+        let sizeY = 90;
+        let sizeX = 3;
+        let step = 1;
+        let score = 0;
+        let side = Side;
+        return this;
+    }
+
+    method void moving(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + sizeX, y + sizeY);
+
+     if (side = 0) {
+            if (Keyboard.keyPressed() = 131) { do up(); }     // Стрелка вверх
+            if (Keyboard.keyPressed() = 133) { do down(); }   // Стрелка вниз
+        }
+
+    // Для правого игрока (side=1): клавиши "W" (87) и "S" (83)
+        if (side = 1) {
+            if (Keyboard.keyPressed() = 87) { do up(); }      // Клавиша W
+            if (Keyboard.keyPressed() = 83) { do down(); }    // Клавиша S
+        }
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + sizeX, y + sizeY);
+        
+        return;
+    }
+    
+    method void up(){
+        if(y - step > 0){
+            let y = y - step;
+        }
+        return;
+    }
+
+    method void down(){
+        if(y + step + sizeY < 255){
+            let y = y + step;
+        }
+        return;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method int getSizeX(){
+        return sizeX;
+    }
+
+    method int getSizeY(){
+        return sizeY;
+    }
+
+    method void incrementScore(){
+        let score = score + 1;
+        return;
+    }
+}
