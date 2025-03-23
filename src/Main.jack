@@ -19,14 +19,13 @@ class Main{
         do Screen.clearScreen();
         
         
-        while (true){
+        while ((player1.getScore() < 10) | (player2.getScore() < 10)){
             do ball.moving();
-            do Sys.wait(7);
+            do Sys.wait(5);
             do gameField.draw();
             do player1.moving();
-            //do Sys.wait(1);
+            do Sys.wait(5);
             do player2.moving();
-
         }
         return;
     }

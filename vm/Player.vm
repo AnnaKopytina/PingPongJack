@@ -110,7 +110,7 @@ pop pointer 0
 push this 1
 push this 4
 sub
-push constant 0
+push constant 30
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
@@ -130,7 +130,7 @@ push this 4
 add
 push this 2
 add
-push constant 255
+push constant 247
 lt
 if-goto IF_TRUE0
 goto IF_FALSE0

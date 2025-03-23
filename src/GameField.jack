@@ -2,16 +2,16 @@ class GameField{
     field int indent;
 
     constructor GameField new(){
-        let indent = 3;
+        let indent = 10;
         return this;
     }
     method void draw(){
-        do Screen.drawRectangle(512/2 -1 , 5,512 /2 + 1 , 250);
+        do Screen.drawRectangle(512/2 , 25 ,512 /2 , 250);
 
-        do Screen.drawLine(0 + indent, 0 + indent,  0 + indent, 255 - indent);
+        do Screen.drawLine(0 + indent, 20 + indent,  0 + indent, 255 - indent);
         do Screen.drawLine(0 + indent, 255 -indent ,  511 - indent, 255 - indent);
-        do Screen.drawLine(511 - indent, 255 - indent,  511 - indent, 0 + indent);
-        do Screen.drawLine(0 + indent, 0 + indent,  511 - indent, 0 + indent);
+        do Screen.drawLine(511 - indent, 255 - indent,  511 - indent, 20 + indent);
+        do Screen.drawLine(0 + indent, 20 + indent,  511 - indent, 20 + indent); 
         
         return;
     }

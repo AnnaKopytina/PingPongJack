@@ -6,16 +6,18 @@ class Player{
     field int side; //0 - left, 1 - right
 
     constructor Player new(int X, int Y, int Side){
-        let x = X;
-        let y = Y;
+    let x = X;  
+    let y = Y;
 
-        let sizeY = 90;
-        let sizeX = 4;
-        let step = 2;
-        let score = 0;
-        let side = Side;
-        return this;
+    let sizeY = 90;
+    let sizeX = 4;
+    let step = 2;
+    let score = 0;
+    let side = Side;
+    
+    return this;
     }
+
 
     method void moving(){
         do Screen.setColor(false);
@@ -38,14 +40,14 @@ class Player{
     }
     
     method void up(){
-        if(y - step > 0){
+        if(y - step > 30){
             let y = y - step;
         }
         return;
     }
 
     method void down(){
-        if(y + step + sizeY < 255){
+        if(y + step + sizeY < 247){
             let y = y + step;
         }
         return;

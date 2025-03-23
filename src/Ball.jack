@@ -5,24 +5,34 @@ class Ball {
     field Player playerRight;
 
     constructor Ball new(Player player1, Player player2) {
-        let xCord = 512/2;
-        let yCord = 256/2;
-        let radius = 4; 
-        let xSpeed = 2;  
-        let ySpeed = 1;
+        let xCord = 512 / 2;
+        let yCord = 256 / 2;
+        let radius = 7; 
+        let xSpeed = 3;  
+        let ySpeed = 2;
         let playerLeft = player1;
         let playerRight = player2;
 
         return this;
     }
 
-    method void goToCenter(){
-        let xCord = 512 /2;
-        let yCord = 256/2;
+    method void goToCenter() {
+        let xCord = 512 / 2;
+        let yCord = 256 / 2;
+        return;
+    }
+
+    method void updateScoreDisplay() {
+        do Output.moveCursor(1, 40);
+        do Output.printInt(playerLeft.getScore());
+        
+        do Output.moveCursor(1, 22);
+        do Output.printInt(playerRight.getScore());
         return;
     }
 
     method void moving() {
+        // Стираем только мяч, не затрагивая всю область счета
         do Screen.setColor(false);
         do Screen.drawCircle(xCord, yCord, radius);
 
@@ -30,59 +40,56 @@ class Ball {
         let yCord = yCord + ySpeed;
 
         // Проверка столкновения с границами экрана
-        if (xCord - radius < 0) {
+        if (xCord - radius < 3) {
             let xSpeed = -xSpeed;
-            let xCord = radius; // Корректировка координаты
+            let xCord = 3 + radius; 
         }
-        if (xCord + radius > 511) {
+        if (xCord + radius > 508) {
             let xSpeed = -xSpeed;
-            let xCord = 511 - radius; 
+            let xCord = 508 - radius; 
         }
-        if (yCord - radius < 0) {
+        if (yCord - radius < 25) {
             let ySpeed = -ySpeed;
-            let yCord = radius; /
+            let yCord = 25 + radius; 
         }
-        if (yCord + radius > 255) {
+        if (yCord + radius > 250) {
             let ySpeed = -ySpeed;
-            let yCord = 255 - radius; 
+            let yCord = 250 - radius; 
         }
 
-
-        //отбил левый игрок
-        if(xSpeed < 0){
-            if ( ((xCord - radius) < ((playerLeft.getX() + playerLeft.getSizeX()) + 1)) &
-            (yCord > playerLeft.getY()) & 
-            (yCord < (playerLeft.getY() + playerLeft.getSizeY())) ) {
-            let xSpeed = -xSpeed;
+        // Отбил левый игрок
+        if (xSpeed < 0) {
+            if (((xCord - radius) < ((playerLeft.getX() + playerLeft.getSizeX()) + 1)) &
+                (yCord > playerLeft.getY()) & 
+                (yCord < (playerLeft.getY() + playerLeft.getSizeY()))) {
+                let xSpeed = -xSpeed;
             }
         }
 
-        //отбил правый игрок
-        if(xSpeed > 0){
-            if ( ((xCord + radius) > playerRight.getX()) &
-            (yCord > playerRight.getY()) & 
-            (yCord < (playerRight.getY() + playerRight.getSizeY())) ) {
-            let xSpeed = -xSpeed;
+        // Отбил правый игрок
+        if (xSpeed > 0) {
+            if (((xCord + radius) > playerRight.getX()) &
+                (yCord > playerRight.getY()) & 
+                (yCord < (playerRight.getY() + playerRight.getSizeY()))) {
+                let xSpeed = -xSpeed;
+            }
         }
 
-        }
-            //счетчик правого игрока
-        if (((xCord - radius) <  5)){
+        // Счетчик правого игрока
+        if ((xCord - radius) < 4) {
             do goToCenter();
             do playerRight.incrementScore();
-            do Output.moveCursor(3, 40);
-            do Output.printInt(playerRight.getScore());
-            } 
+            do updateScoreDisplay();
+        } 
 
-            //счетчик левого игрока
-        if (((xCord + radius) > 509)){
+        // Счетчик левого игрока
+        if ((xCord + radius) > 507) {
             do goToCenter();
             do playerLeft.incrementScore();
-            do Output.moveCursor(3, 22);
-            do Output.printInt(playerLeft.getScore());
-            } 
+            do updateScoreDisplay();
+        } 
 
-        // Рисуем новый круг
+        // Отрисовка мяча
         do Screen.setColor(true);
         do Screen.drawCircle(xCord, yCord, radius);
 
