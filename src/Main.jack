@@ -1,0 +1,33 @@
+class Main{
+
+    function void main()
+    {
+        var Ball ball;
+        var GameField gameField;
+        var Player player1;
+        var Player player2;
+
+        let gameField = GameField.new();
+        let player1 = Player.new(0 + 30, 100, 0);
+        let player2 = Player.new(512 - 30, 100, 1);
+        let ball = Ball.new(player1, player2);
+        
+        do Output.moveCursor(10, 23);
+        do Output.printString("Welcome to Pong!");
+
+        do Sys.wait(1000);
+        do Screen.clearScreen();
+        
+        
+        while (true){
+            do ball.moving();
+            do Sys.wait(7);
+            do gameField.draw();
+            do player1.moving();
+            //do Sys.wait(1);
+            do player2.moving();
+
+        }
+        return;
+    }
+}
