@@ -23,11 +23,9 @@ class Ball {
     }
 
     method void moving() {
-        // Стираем старый круг
         do Screen.setColor(false);
         do Screen.drawCircle(xCord, yCord, radius);
 
-        // Обновляем координаты
         let xCord = xCord + xSpeed;
         let yCord = yCord + ySpeed;
 
@@ -38,27 +36,28 @@ class Ball {
         }
         if (xCord + radius > 511) {
             let xSpeed = -xSpeed;
-            let xCord = 511 - radius; // Корректировка координаты
+            let xCord = 511 - radius; 
         }
         if (yCord - radius < 0) {
             let ySpeed = -ySpeed;
-            let yCord = radius; // Корректировка координаты
+            let yCord = radius; /
         }
         if (yCord + radius > 255) {
             let ySpeed = -ySpeed;
-            let yCord = 255 - radius; // Корректировка координаты
+            let yCord = 255 - radius; 
         }
 
 
-
+        //отбил левый игрок
         if(xSpeed < 0){
             if ( ((xCord - radius) < ((playerLeft.getX() + playerLeft.getSizeX()) + 1)) &
             (yCord > playerLeft.getY()) & 
-            (yCord < playerLeft.getY() + playerLeft.getSizeY()) ) {
+            (yCord < (playerLeft.getY() + playerLeft.getSizeY())) ) {
             let xSpeed = -xSpeed;
             }
         }
 
+        //отбил правый игрок
         if(xSpeed > 0){
             if ( ((xCord + radius) > playerRight.getX()) &
             (yCord > playerRight.getY()) & 
@@ -67,17 +66,20 @@ class Ball {
         }
 
         }
-
-            if (((xCord - radius) <  5)){
+            //счетчик правого игрока
+        if (((xCord - radius) <  5)){
             do goToCenter();
             do playerRight.incrementScore();
-
+            do Output.moveCursor(3, 40);
+            do Output.printInt(playerRight.getScore());
             } 
 
+            //счетчик левого игрока
         if (((xCord + radius) > 509)){
             do goToCenter();
             do playerLeft.incrementScore();
-
+            do Output.moveCursor(3, 22);
+            do Output.printInt(playerLeft.getScore());
             } 
 
         // Рисуем новый круг

@@ -10,8 +10,8 @@ class Player{
         let y = Y;
 
         let sizeY = 90;
-        let sizeX = 3;
-        let step = 1;
+        let sizeX = 4;
+        let step = 2;
         let score = 0;
         let side = Side;
         return this;
@@ -21,15 +21,15 @@ class Player{
         do Screen.setColor(false);
         do Screen.drawRectangle(x, y, x + sizeX, y + sizeY);
 
-     if (side = 0) {
-            if (Keyboard.keyPressed() = 131) { do up(); }     // Стрелка вверх
-            if (Keyboard.keyPressed() = 133) { do down(); }   // Стрелка вниз
+        //управление ракетками
+        if (side = 0) {
+            if (Keyboard.keyPressed() = 87) { do up(); }    
+            if (Keyboard.keyPressed() = 83) { do down(); }   
         }
 
-    // Для правого игрока (side=1): клавиши "W" (87) и "S" (83)
         if (side = 1) {
-            if (Keyboard.keyPressed() = 87) { do up(); }      // Клавиша W
-            if (Keyboard.keyPressed() = 83) { do down(); }    // Клавиша S
+            if (Keyboard.keyPressed() = 131) { do up(); }      
+            if (Keyboard.keyPressed() = 133) { do down(); }    
         }
         do Screen.setColor(true);
         do Screen.drawRectangle(x, y, x + sizeX, y + sizeY);
@@ -70,5 +70,9 @@ class Player{
     method void incrementScore(){
         let score = score + 1;
         return;
+    }
+
+    method int getScore(){
+        return score;
     }
 }

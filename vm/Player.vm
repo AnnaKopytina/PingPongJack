@@ -8,9 +8,9 @@ push argument 1
 pop this 1
 push constant 90
 pop this 2
-push constant 3
+push constant 4
 pop this 3
-push constant 1
+push constant 2
 pop this 4
 push constant 0
 pop this 5
@@ -41,7 +41,7 @@ if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 call Keyboard.keyPressed 0
-push constant 131
+push constant 87
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
@@ -51,7 +51,7 @@ call Player.up 1
 pop temp 0
 label IF_FALSE1
 call Keyboard.keyPressed 0
-push constant 133
+push constant 83
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -68,7 +68,7 @@ if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 call Keyboard.keyPressed 0
-push constant 87
+push constant 131
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
@@ -78,7 +78,7 @@ call Player.up 1
 pop temp 0
 label IF_FALSE4
 call Keyboard.keyPressed 0
-push constant 83
+push constant 133
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
@@ -170,4 +170,9 @@ push constant 1
 add
 pop this 5
 push constant 0
+return
+function Player.getScore 0
+push argument 0
+pop pointer 0
+push this 5
 return
