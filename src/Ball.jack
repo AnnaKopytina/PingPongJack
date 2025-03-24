@@ -4,11 +4,11 @@ class Ball {
     field Player playerLeft;
     field Player playerRight;
 
-    constructor Ball new(Player player1, Player player2) {
+    constructor Ball new(Player player1, Player player2, int speedX) {
         let xCord = 512 / 2;
         let yCord = 256 / 2;
-        let radius = 7; 
-        let xSpeed = 3;  
+        let radius = 6; 
+        let xSpeed = speedX;  
         let ySpeed = 2;
         let playerLeft = player1;
         let playerRight = player2;
@@ -24,10 +24,10 @@ class Ball {
 
     method void updateScoreDisplay() {
         do Output.moveCursor(1, 40);
-        do Output.printInt(playerLeft.getScore());
+        do Output.printInt(playerRight.getScore());
         
         do Output.moveCursor(1, 22);
-        do Output.printInt(playerRight.getScore());
+        do Output.printInt(playerLeft.getScore());
         return;
     }
 
@@ -62,7 +62,10 @@ class Ball {
             if (((xCord - radius) < ((playerLeft.getX() + playerLeft.getSizeX()) + 1)) &
                 (yCord > playerLeft.getY()) & 
                 (yCord < (playerLeft.getY() + playerLeft.getSizeY()))) {
+
                 let xSpeed = -xSpeed;
+                if(playerLeft.getLastMove() = 1){let ySpeed = MathExtention.abs(ySpeed);}// мяч летит туда, куда двигалась ракетка
+                if(playerLeft.getLastMove() = 0){let ySpeed = -MathExtention.abs(ySpeed);}
             }
         }
 
@@ -72,6 +75,9 @@ class Ball {
                 (yCord > playerRight.getY()) & 
                 (yCord < (playerRight.getY() + playerRight.getSizeY()))) {
                 let xSpeed = -xSpeed;
+
+                if(playerRight.getLastMove() = 1){let ySpeed = MathExtention.abs(ySpeed);}
+                if(playerRight.getLastMove() = 0){let ySpeed = -MathExtention.abs(ySpeed);}
             }
         }
 
@@ -94,5 +100,13 @@ class Ball {
         do Screen.drawCircle(xCord, yCord, radius);
 
         return;
+    }
+
+    method int getLeftScore(){
+        return playerLeft.getScore();
+    }
+
+    method int getRightScore(){
+        return playerRight.getScore();
     }
 }

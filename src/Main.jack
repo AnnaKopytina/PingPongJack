@@ -5,32 +5,87 @@ class Main {
         var Player player1;
         var Player player2;
         var int maxScore;
+        var int chooseDif;
 
         while (true) {
-            // Инициализация или сброс игровых объектов
-            let gameField = GameField.new();
-            let player1 = Player.new(30, 100, 0); // 0 + 30 упрощено
-            let player2 = Player.new(482, 100, 1); // 512 - 30 упрощено
-            let ball = Ball.new(player1, player2);
-            let maxScore = Keyboard.readInt("Write how many points you need to reach end of the game: ");
 
-            do Screen.clearScreen();
             do Output.moveCursor(10, 20);
             do Output.printString("Welcome to Pong!");
-
-            do Sys.wait(1000);
+            do Sys.wait(2000);
             do Screen.clearScreen();
+
             do Output.moveCursor(10, 20);
+            let maxScore = Keyboard.readInt("Write win score: ");
+            if(maxScore < 1){
+                do Output.moveCursor(12, 20);
+                do Output.printString("Illegal score!");
+                do Output.moveCursor(14, 20);
+                do Output.printString("The score is set to 10");
+                do Sys.wait(2000);
+                let maxScore = 10;
+            }
+            do Screen.clearScreen();
+
+
+            do Output.moveCursor(10, 20);
+            do Output.printString("Choose difficulity:");
+            do Output.moveCursor(12, 20);
+            do Output.printString("1. Easy");
+            do Output.moveCursor(14, 20);
+            do Output.printString("2. Medium");
+            do Output.moveCursor(16, 20);
+            do Output.printString("3. Hard");
+
+            do Output.moveCursor(18, 2);
+            let chooseDif = Keyboard.readInt("");
+            do Screen.clearScreen();
+            
+
+            if(chooseDif = 1){
+            let gameField = GameField.new();
+            let player1 = Player.new(30, 100, 0, 75); // 0 + 30 упрощено
+            let player2 = Player.new(482, 100, 1, 75); // 512 - 30 упрощено
+            let ball = Ball.new(player1, player2, 2);
+            }
+
+            if(chooseDif = 2){
+            let gameField = GameField.new();
+            let player1 = Player.new(30, 100, 0, 55); // 0 + 30 упрощено
+            let player2 = Player.new(482, 100, 1, 55); // 512 - 30 упрощено
+            let ball = Ball.new(player1, player2, 3);
+            }
+
+            if(chooseDif = 3){
+            let gameField = GameField.new();
+            let player1 = Player.new(30, 100, 0, 45); // 0 + 30 упрощено
+            let player2 = Player.new(482, 100, 1, 45); // 512 - 30 упрощено
+            let ball = Ball.new(player1, player2, 3);
+            }
+
+            if((chooseDif > 3) | (chooseDif < 1)){
+            let gameField = GameField.new();
+            let player1 = Player.new(30, 100, 0, 45); // 0 + 30 упрощено
+            let player2 = Player.new(482, 100, 1, 45); // 512 - 30 упрощено
+            let ball = Ball.new(player1, player2, 10);
+            do Output.moveCursor(12, 20);
+            do Output.printString("Hehe, funny...");
+            do Sys.wait(2000);
+            do Screen.clearScreen();
+
+            }
+
+            
+            do Output.moveCursor(10, 30);
             do Output.printString("3...");
 
             do Sys.wait(1000);
             do Screen.clearScreen();
-            do Output.moveCursor(10, 20);
+            do Output.moveCursor(10, 30);
             do Output.printString("2...");
 
             do Sys.wait(1000);
             do Screen.clearScreen();
-            do Output.moveCursor(10, 20);
+            do Output.moveCursor(10, 30);
             do Output.printString("1...");
 
             do Sys.wait(1000);
@@ -48,11 +103,18 @@ class Main {
 
             do Screen.clearScreen();
             do Output.moveCursor(10, 23);
-            do Output.printString("Game over :(");
+            //do Output.printString("Game over :(");
+            if(ball.getLeftScore() < ball.getRightScore()){
+                do Output.printString("Right wins!");
+            }
+
+            if(ball.getLeftScore() > ball.getRightScore()){
+                do Output.printString("Left wins!");
+            }
+
             do Sys.wait(3000);
             do Screen.clearScreen();
             do Output.moveCursor(0,0);
-
         }
 
         return;

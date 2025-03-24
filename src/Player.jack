@@ -4,16 +4,18 @@ class Player{
     field int step;
     field int score;
     field int side; //0 - left, 1 - right
+    field int lastMove;// 0 - up, 1 - down 
 
-    constructor Player new(int X, int Y, int Side){
+    constructor Player new(int X, int Y, int Side, int ySize){
     let x = X;  
     let y = Y;
 
-    let sizeY = 90;
+    let sizeY = ySize;
     let sizeX = 4;
     let step = 2;
     let score = 0;
     let side = Side;
+    let lastMove = 0;
     
     return this;
     }
@@ -25,13 +27,21 @@ class Player{
 
         //управление ракетками
         if (side = 0) {
-            if (Keyboard.keyPressed() = 87) { do up(); }    
-            if (Keyboard.keyPressed() = 83) { do down(); }   
+            if (Keyboard.keyPressed() = 87) { 
+                do up();
+                let lastMove = 0; }    
+            if (Keyboard.keyPressed() = 83) { 
+                do down();
+                let lastMove = 1;}   
         }
 
         if (side = 1) {
-            if (Keyboard.keyPressed() = 131) { do up(); }      
-            if (Keyboard.keyPressed() = 133) { do down(); }    
+            if (Keyboard.keyPressed() = 131) {
+                 do up();
+                let lastMove = 0; }      
+            if (Keyboard.keyPressed() = 133) { 
+                do down();
+                let lastMove = 1; }    
         }
         do Screen.setColor(true);
         do Screen.drawRectangle(x, y, x + sizeX, y + sizeY);
@@ -76,5 +86,9 @@ class Player{
 
     method int getScore(){
         return score;
+    }
+    
+    method int getLastMove(){
+        return lastMove;
     }
 }
