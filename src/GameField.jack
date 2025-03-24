@@ -9,7 +9,7 @@ class GameField{
         do Screen.drawRectangle(512/2 , 25 ,512 /2 , 250);
 
         do Screen.drawLine(0 + indent, 20 + indent,  0 + indent, 255 - indent);
-        do Screen.drawLine(0 + indent, 255 -indent ,  511 - indent, 255 - indent);
+        do Screen.drawLine(0 + indent, 255 - indent ,  511 - indent, 255 - indent);
         do Screen.drawLine(511 - indent, 255 - indent,  511 - indent, 20 + indent);
         do Screen.drawLine(0 + indent, 20 + indent,  511 - indent, 20 + indent); 
         
