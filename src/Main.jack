@@ -93,12 +93,12 @@ class Main {
 
             // Игровой цикл
             while ((player1.getScore() < maxScore) & (player2.getScore() < maxScore)) {
-                do ball.move();
+                do ball.moving();
                 do Sys.wait(3);
                 do gameField.draw();
-                do player1.move();
+                do player1.moving();
                 do Sys.wait(3);
-                do player2.move();
+                do player2.moving();
             }
 
             do Screen.clearScreen();

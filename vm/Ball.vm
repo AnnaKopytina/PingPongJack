@@ -56,7 +56,7 @@ call Output.printInt 1
 pop temp 0
 push constant 0
 return
-function Ball.move 0
+function Ball.moving 0
 push argument 0
 pop pointer 0
 push constant 0
@@ -183,7 +183,7 @@ if-goto IF_TRUE6
 goto IF_FALSE6
 label IF_TRUE6
 push this 4
-call MathExtentsion.abs 1
+call MathExtention.abs 1
 pop this 4
 label IF_FALSE6
 push this 5
@@ -194,7 +194,7 @@ if-goto IF_TRUE7
 goto IF_FALSE7
 label IF_TRUE7
 push this 4
-call MathExtension.abs 1
+call MathExtention.abs 1
 neg
 pop this 4
 label IF_FALSE7
@@ -239,7 +239,7 @@ if-goto IF_TRUE10
 goto IF_FALSE10
 label IF_TRUE10
 push this 4
-call MathExtension.abs 1
+call MathExtention.abs 1
 pop this 4
 label IF_FALSE10
 push this 6
@@ -250,7 +250,7 @@ if-goto IF_TRUE11
 goto IF_FALSE11
 label IF_TRUE11
 push this 4
-call MathExtension.abs 1
+call MathExtention.abs 1
 neg
 pop this 4
 label IF_FALSE11

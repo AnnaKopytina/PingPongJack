@@ -544,7 +544,7 @@ and
 not
 if-goto WHILE_END1
 push local 0
-call Ball.move 1
+call Ball.moving 1
 pop temp 0
 push constant 3
 call Sys.wait 1
@@ -553,13 +553,13 @@ push local 1
 call GameField.draw 1
 pop temp 0
 push local 2
-call Player.move 1
+call Player.moving 1
 pop temp 0
 push constant 3
 call Sys.wait 1
 pop temp 0
 push local 3
-call Player.move 1
+call Player.moving 1
 pop temp 0
 goto WHILE_EXP1
 label WHILE_END1

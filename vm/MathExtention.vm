@@ -1,4 +1,4 @@
-function MathExtension.abs 0
+function MathExtention.abs 0
 push argument 0
 push constant 0
 lt
