@@ -20,7 +20,7 @@ push constant 0
 pop this 7
 push pointer 0
 return
-function Player.moving 0
+function Player.move 0
 push argument 0
 pop pointer 0
 push constant 0

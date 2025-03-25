@@ -21,7 +21,7 @@ class Player{
     }
 
 
-    method void moving(){
+    method void move(){
         do Screen.setColor(false);
         do Screen.drawRectangle(x, y, x + sizeX, y + sizeY);
 

@@ -31,7 +31,7 @@ class Ball {
         return;
     }
 
-    method void moving() {
+    method void move() {
         // Стираем только мяч, не затрагивая всю область счета
         do Screen.setColor(false);
         do Screen.drawCircle(xCord, yCord, radius);
@@ -64,8 +64,8 @@ class Ball {
                 (yCord < (playerLeft.getY() + playerLeft.getSizeY()))) {
 
                 let xSpeed = -xSpeed;
-                if(playerLeft.getLastMove() = 1){let ySpeed = MathExtention.abs(ySpeed);}// мяч летит туда, куда двигалась ракетка
-                if(playerLeft.getLastMove() = 0){let ySpeed = -MathExtention.abs(ySpeed);}
+                if(playerLeft.getLastMove() = 1){let ySpeed = MathExtentsion.abs(ySpeed);}// мяч летит туда, куда двигалась ракетка
+                if(playerLeft.getLastMove() = 0){let ySpeed = -MathExtension.abs(ySpeed);}
             }
         }
 
@@ -76,8 +76,8 @@ class Ball {
                 (yCord < (playerRight.getY() + playerRight.getSizeY()))) {
                 let xSpeed = -xSpeed;
 
-                if(playerRight.getLastMove() = 1){let ySpeed = MathExtention.abs(ySpeed);}
-                if(playerRight.getLastMove() = 0){let ySpeed = -MathExtention.abs(ySpeed);}
+                if(playerRight.getLastMove() = 1){let ySpeed = MathExtension.abs(ySpeed);}
+                if(playerRight.getLastMove() = 0){let ySpeed = -MathExtension.abs(ySpeed);}
             }
         }
 
